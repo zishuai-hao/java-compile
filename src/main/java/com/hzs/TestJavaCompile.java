@@ -1,3 +1,5 @@
+package com.hzs;
+
 import cn.hutool.core.map.MapUtil;
 import com.hzs.JavaCompileUtil;
 import org.junit.jupiter.api.Test;
@@ -10,9 +12,7 @@ import java.util.Map;
 public class TestJavaCompile {
     public static final String SRC = System.getProperty("user.dir");
 
-
-    @Test
-    public void dynamicCompile() {
+    public static void main(String[] args) {
 
         Object o = JavaCompileUtil.execJava(SRC + "/classDemo/java/_10000/AddArithmetic.java",
                 "compute",

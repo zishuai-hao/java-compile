@@ -1,7 +1,10 @@
 package com.hzs;
 
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.io.resource.ResourceUtil;
+import cn.hutool.core.util.ClassUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.platform.commons.util.ClassUtils;
 
 import javax.tools.JavaCompiler;
 import javax.tools.JavaFileObject;
@@ -17,19 +20,23 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Slf4j
 public class JavaCompileUtil {
 
     /**
      * 编译输出路径 idea 默认输出路径
      */
-    public static final String DEST_OUTPUT = System.getProperty("user.dir") + File.separator + "target" + File.separator + "classes";
+//    public static final String DEST_OUTPUT = System.getProperty("user.dir") + File.separator + "target" + File.separator + "classes";
+
+    /**
+     * classpath
+     */
+    public static final String DEST_OUTPUT = ResourceUtil.getResource("").getPath();
 
     public static final String PACKAGE_NAME_PREFIX = "classDemo._";
 
     public static Pattern pattern = Pattern.compile("^package\\s+\\S+;");
 
-    public static Object execJava(String path, String methodName, Map<String,Object> args) {
+    public static Object execJava(String path, String methodName, Map<String, Object> args) {
 
         String javaName = FileUtil.mainName(path);
         File file = new File(path);

@@ -1,4 +1,4 @@
 # java-compile
 java 动态编译
 
-直接执行测试类
+直接运行main
